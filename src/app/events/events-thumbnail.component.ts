@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input} from '@angular/core';
 
 @Component({
   template: `
@@ -22,6 +22,10 @@ import {Component, Input} from "@angular/core";
 
     .well div {
       color: #bbb;
+    }
+
+    .thumbnail {
+      min-height: 210px;
     }
   `]
 })
