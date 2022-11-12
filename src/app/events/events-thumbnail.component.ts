@@ -5,11 +5,11 @@ import {Component, Input} from '@angular/core';
     <div class="well hoverwell thumbnail">
       <h2>{{event?.name}}</h2>
       <div>Date: {{event?.date}}</div>
-      <div [ngClass]="getTimeClass()" [ngSwitch]="event?.time">
+      <div [ngSwitch]="event?.time">
         Time: {{event?.time}}
-        <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
-        <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
-        <span *ngSwitchDefault>(Normal Start)</span>
+        <span [ngClass]="getTimeClass()" *ngSwitchCase="'8:00 am'">(Early Start)</span>
+        <span [ngClass]="getTimeClass()" *ngSwitchCase="'10:00 am'">(Late Start)</span>
+        <span [ngClass]="getTimeClass()" *ngSwitchDefault>(Normal Start)</span>
       </div>
       <div>Price: \${{event?.price}}</div>
       <div *ngIf="event?.location">
@@ -23,15 +23,13 @@ import {Component, Input} from '@angular/core';
   `,
   selector: 'event-thumbnail',
   styles: [`
-    .bold {
+    .earlyStart {
       font-weight: bold;
-    }
-
-    .green {
       color: green !important;
     }
 
-    .red {
+    .lateStart {
+      font-weight: bold;
       color: red !important;
     }
 
@@ -52,16 +50,16 @@ export class EventsThumbnailComponent {
   @Input()
   event: any;
 
-  getTimeClass(): string[] {
+  getTimeClass(): string {
     switch (this.event?.time) {
       case '8:00 am' : {
-        return ['green', 'bold'];
+        return 'earlyStart';
       }
       case '10:00 am' : {
-        return ['red', 'bold'];
+        return 'lateStart';
       }
       default :
-        return [];
+        return '';
     }
   }
 }
