@@ -52,16 +52,16 @@ export class EventsThumbnailComponent {
   @Input()
   event: any;
 
-  getTimeClass(): string {
+  getTimeClass(): string[] {
     switch (this.event?.time) {
       case '8:00 am' : {
-        return 'green bold';
+        return ['green', 'bold'];
       }
       case '10:00 am' : {
-        return 'red bold';
+        return ['red', 'bold'];
       }
       default :
-        return '';
+        return [];
     }
   }
 }
