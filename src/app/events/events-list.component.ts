@@ -13,8 +13,7 @@ import {ToastrService} from '../common/toastr.service';
         </div>
       </div>
     </div>
-  `,
-  selector: 'events-list'
+  `
 })
 export class EventsListComponent implements OnInit {
   events: any[] = [];
